@@ -1,0 +1,74 @@
+<app-banner></app-banner>
+
+<div nz-row nzGutter="16" class="separate-rows">
+  <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
+  <div nz-col nzSm="24" nzMd="24" nzLg="22" nzXl="18">
+    <nz-card style="height: 400px;">
+      <nz-tabset nzSize="large" nzLinkRouter>
+        <nz-tab>
+          <a
+            nz-tab-link
+            [routerLink]="['.']"
+            [queryParams]="{ tab: 'one' }"
+            queryParamsHandling="merge"
+          >
+            <i nz-icon nzType="customer-service"></i>
+            Manage Shows
+          </a>
+        </nz-tab>
+
+        <nz-tab>
+          <a
+            nz-tab-link
+            [routerLink]="['.']"
+            [queryParams]="{ tab: 'four' }"
+            queryParamsHandling="merge"
+          >
+            <i nz-icon nzType="team" nzTheme="outline"></i>
+            Artists and Users
+          </a>
+        </nz-tab>
+
+        <nz-tab>
+          <a
+            nz-tab-link
+            [routerLink]="['.']"
+            [queryParams]="{ tab: 'three' }"
+            queryParamsHandling="merge"
+          >
+            <i nz-icon nzType="control" nzTheme="outline"></i>
+            SEO
+          </a>
+        </nz-tab>
+        <nz-tab>
+          <a
+            nz-tab-link
+            [routerLink]="['.']"
+            [queryParams]="{ tab: 'four' }"
+            queryParamsHandling="merge"
+          >
+            <i nz-icon nzType="setting" nzTheme="outline"></i>
+            Settings</a
+          >
+        </nz-tab>
+
+        <nz-tab>
+          <a
+            nz-tab-link
+            [routerLink]="['.']"
+            [queryParams]="{ tab: 'four' }"
+            queryParamsHandling="merge"
+          >
+            <i nz-icon nzType="database" nzTheme="outline"></i>
+            Database
+          </a>
+        </nz-tab>
+      </nz-tabset>
+
+      <div>
+        <h1>Hello</h1>
+        <router-outlet>Loading</router-outlet>
+      </div>
+    </nz-card>
+  </div>
+</div>

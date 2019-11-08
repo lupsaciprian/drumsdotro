@@ -1,0 +1,32 @@
+@import "./../../../../styles.less";
+
+.alert {
+  color: @white;
+  padding: @padding-sm;
+  border-radius: 4px;
+
+  .alert-icon {
+    font-size: 24px;
+    margin-right: 12px;
+  }
+  .alert-retry {
+    margin-right: 6px;
+  }
+
+  .alert-description {
+    font-size: @font-size-sm;
+  }
+}
+
+.danger-alert {
+  background: @error-color;
+}
+.success-alert {
+  background: @success-color;
+}
+.warning-alert {
+  background: @warning-color;
+}
+.info-alert {
+  background: @info-color;
+}

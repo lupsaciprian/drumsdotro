@@ -1,0 +1,30 @@
+<div class="alert flex-container-row" [ngClass]="alert.class">
+  <div class="flex-item-center">
+    <i class="alert-icon" nz-icon [nzType]="alert.icon" nzTheme="outline"></i>
+  </div>
+
+  <div class="fullwidth flex-item-space-between">
+    <div>
+      <p nz-text class="alert-title">{{ alert.title }}</p>
+      <span nz-text nzType="secondary" class="alert-description">{{
+        alert.description
+      }}</span>
+    </div>
+
+    <div class="flex-item-center">
+      <button
+        (click)="retryLoad()"
+        class="alert-retry"
+        nz-button
+        nzSize="default"
+        nzType="default"
+        nzGhost="true"
+      >
+        <i nz-icon nzType="reload" nzTheme="outline"></i>
+        Retry
+      </button>
+
+      <i (click)="close()" nz-icon nzType="close" nzTheme="outline"></i>
+    </div>
+  </div>
+</div>

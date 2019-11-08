@@ -1,0 +1,130 @@
+@import "./styles.less";
+
+// @iterations: 8;
+// .margins-loop (@i) when (@i > 0) {
+//   .span-@{i} {
+//     width: ~"@{i}%";
+//   }
+//   .margins-loop(@i - 1);
+// }
+// .margins-loop (@iterations);
+
+@grey-shade: rgba(0, 0, 0, 0.65);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0 !important;
+}
+
+// body {
+//   overflow-x: hidden;
+// }
+
+.primary {
+  color: @primary-color;
+}
+.success {
+  color: @success-color;
+}
+.error {
+  color: @error-color;
+}
+.warning {
+  color: @warning-color;
+}
+.info {
+  color: @info-color;
+}
+.white {
+  color: @white;
+}
+.black {
+  color: @black;
+}
+
+.bg-primary {
+  background: @primary-color;
+}
+.bg-success {
+  background: @success-color;
+}
+.bg-error {
+  background: @error-color;
+}
+.bg-warning {
+  background: @warning-color;
+}
+.bg-info {
+  background: @info-color;
+}
+.bg-white {
+  background: @white;
+}
+.bg-black {
+  background: @black;
+}
+
+.padding-lg {
+  padding: @padding-lg;
+}
+.padding-md {
+  padding: @padding-md;
+}
+.padding-sm {
+  padding: @padding-sm;
+}
+.padding-xs {
+  padding: @padding-xs;
+}
+
+.radius-sm {
+  border-radius: @border-radius-sm;
+}
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+  left: 0;
+}
+
+.fullwidth {
+  width: 100% !important;
+}
+.fullheight {
+  height: 100% !important;
+}
+.maxfullwidth {
+  max-width: 100% !important;
+}
+.maxfullheight {
+  max-height: 100% !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.separate-rows {
+  margin: 16px 0;
+}
+
+.divider-line {
+  width: 50%;
+  border: 1px solid @grey-shade;
+  border-radius: @border-radius-sm;
+  margin: 2px 0;
+}

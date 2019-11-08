@@ -1,0 +1,25 @@
+<section>
+  <nz-card [nzTitle]="radioShowsTitle" [nzExtra]="more" [nzHoverable]="true">
+    <ng-template #radioShowsTitle>
+      <h2>
+        <i
+          style="margin-right: 10px;"
+          nz-icon
+          nzType="customer-service"
+          nzTheme="outline"
+        ></i
+        >Radio Shows
+      </h2>
+    </ng-template>
+
+    <ng-template #more>
+      <button nz-button nzSize="large" nzType="default">View All Shows</button>
+    </ng-template>
+
+    <!-- <nz-carousel nzAutoPlay nzEffect="fade" style="overflow-x: hidden;">
+      <div nz-carousel-content *ngFor="let image of showsImages">
+        <app-show-individual [showImage]="image"></app-show-individual>
+      </div>
+    </nz-carousel> -->
+  </nz-card>
+</section>

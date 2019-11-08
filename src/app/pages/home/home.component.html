@@ -1,0 +1,37 @@
+<h1 class="success">Facebook Comments</h1>
+
+<app-banner></app-banner>
+
+<!-- <iframe src="http://radio.drums.ro:8000/played.html" width="80%" height="110">
+</iframe> -->
+
+<div nz-row nzGutter="16">
+  <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
+  <div nz-col [nzSm]="24" [nzMd]="24" [nzLg]="11" [nzXl]="8">
+    <!-- <app-shows-slider></app-shows-slider> -->
+    <app-future-shows></app-future-shows>
+  </div>
+  <div nz-col [nzSm]="24" [nzMd]="24" [nzLg]="11" [nzXl]="10">
+    <app-mixcloud></app-mixcloud>
+  </div>
+</div>
+
+<div nz-row class="separate-rows">
+  <div nz-col nzSm="0" nzLg="3"></div>
+  <div nz-col nzSm="24" nzLg="18">
+    <app-future-shows></app-future-shows>
+  </div>
+  <div nz-col nzSm="0" nzLg="3"></div>
+</div>
+
+<div nz-row class="separate-rows">
+  <div nz-col nzSm="0" nzLg="3"></div>
+  <div nz-col nzSm="24" nzLg="18">
+    <app-footer></app-footer>
+  </div>
+  <div nz-col nzSm="0" nzLg="3"></div>
+</div>
+
+<div nz-row class="relative">
+  <app-player></app-player>
+</div>

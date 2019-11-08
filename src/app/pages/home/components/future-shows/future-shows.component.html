@@ -1,0 +1,113 @@
+<section>
+  <nz-card [nzTitle]="radioShowsTitle" nzExtra="more">
+    <ng-template #radioShowsTitle>
+      <h2>
+        <i
+          style="margin-right: 8px;"
+          nz-icon
+          nzType="customer-service"
+          nzTheme="outline"
+        ></i
+        >Radio Shows
+      </h2>
+    </ng-template>
+
+    <ng-template #futureShowsOffline>
+      <h1>Offline</h1>
+    </ng-template>
+
+    <!-- [nzGrid]="{ gutter: 8, xs: 24, sm: 12, md: 8, lg: 6, xl: 6 }" -->
+    <nz-list
+      *ngIf="futureShows && !futureShowsFeedbackAlert; else futureShowsOffline"
+      nzItemLayout="vertical"
+      [nzDataSource]="futureShows"
+      [nzRenderItem]="show"
+      [nzFooter]="footer"
+      [nzPagination]="pagination"
+    >
+      <ng-template #show let-show>
+        <nz-list-item>
+          <div class="flex-container-row flex-item-space-between">
+            <div
+              class="flex-container-row pointer"
+              nz-popover
+              nzPopoverPlacement="bottom"
+              nzPopoverContent="Content ContentContentContentContentContentContentContentContentContent"
+            >
+              <img
+                style="max-width: 30%; margin-right: 16px;"
+                [src]="show.imageAdress"
+                [alt]="show.name + ' Picture'"
+              />
+
+              <div>
+                <div>
+                  <nz-tag
+                    *ngIf="show.showIsToday.isToday && show.showIsToday.isLive"
+                    style="margin-bottom: 16px;"
+                    nzColor="#ff5647"
+                  >
+                    <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+                    LIVE
+                  </nz-tag>
+
+                  <nz-tag
+                    *ngIf="show.showIsToday.isToday && !show.showIsToday.isLive"
+                    style="margin-bottom: 16px;"
+                    nzColor="#66E2AA"
+                  >
+                    <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+                    Today at {{ show.airHour }}
+                  </nz-tag>
+
+                  <nz-tag
+                    *ngIf="
+                      !show.showIsToday.isToday && !show.showIsToday.isLive
+                    "
+                    style="margin-bottom: 16px;"
+                    nzColor="#6cc9e1"
+                  >
+                    {{ show.dateDifference }}
+                  </nz-tag>
+
+                  <nz-tag>{{ show.genre }}</nz-tag>
+                </div>
+
+                <div style="margin-bottom: 8px;">
+                  <h3 style="margin-top: 16px;">{{ show.showName }}</h3>
+                  hosted by
+                  <a href="">
+                    <strong>{{ show.artist }}</strong>
+                  </a>
+                </div>
+
+                <div class="divider-line"></div>
+
+                <p class="bold">Guest:</p>
+              </div>
+            </div>
+
+            <div *ngIf="viewport !== 'mobile'" class="flex-item-center">
+              <button
+                nz-button
+                nzType="round"
+                nz-popover
+                nzPopoverPlacement="bottom"
+                nzPopoverContent="Recieve a notification 30 minutes before airing this show"
+              >
+                <i nz-icon nzType="notification" nzTheme="outline"></i>
+              </button>
+            </div>
+          </div>
+        </nz-list-item>
+      </ng-template>
+
+      <ng-template #pagination>
+        <nz-pagination
+          [nzPageIndex]="1"
+          [nzTotal]="futureShows.length"
+        ></nz-pagination>
+      </ng-template>
+    </nz-list>
+  </nz-card>
+</section>
