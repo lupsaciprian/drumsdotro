@@ -14,20 +14,20 @@ export class MixcloudProviderService {
 
   getMixcloudMixes(fromPage?: number) {
     let params = new HttpParams();
-    // params = params.append("limit", this.pageLimit.toString());
-    // params = params.append(
-    //   "offset",
-    //   (fromPage ? fromPage * this.pageLimit : 0).toString()
-    // );
+    params = params.append("limit", this.pageLimit.toString());
+    params = params.append(
+      "offset",
+      (fromPage ? fromPage * this.pageLimit : 0).toString()
+    );
 
-    const dateTo = moment()
-      .utc()
-      .format("YYYY-MM-DD HH:MM:SS");
-    const dateFrom = moment(moment().subtract(1, "w"))
-      .utc()
-      .format("YYYY-MM-DD HH:MM:SS");
-    params = params.append("since", dateFrom);
-    params = params.append("until", dateTo);
+    // const dateTo = moment()
+    //   .utc()
+    //   .format("YYYY-MM-DD HH:MM:SS");
+    // const dateFrom = moment(moment().subtract(1, "m"))
+    //   .utc()
+    //   .format("YYYY-MM-DD HH:MM:SS");
+    // params = params.append("since", dateTo);
+    // params = params.append("until", dateFrom);
 
     return this.http.get<any>(
       "https://api.mixcloud.com/drumsdotro/cloudcasts/",

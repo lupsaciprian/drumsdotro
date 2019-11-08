@@ -13,7 +13,6 @@ import { ShowsSliderComponent } from "./components/shows-slider/shows-slider.com
 import { ShowIndividualComponent } from "./components/show-individual/show-individual.component";
 import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
 import { PlayerComponent } from "./components/player/player.component";
-import { FutureShowsComponent } from "./components/future-shows/future-shows.component";
 
 import { AuthenticateComponent } from "src/app/global/components/authenticate/authenticate.component";
 
@@ -30,6 +29,8 @@ import {
 } from "ng-zorro-antd";
 import { NzTagModule } from "ng-zorro-antd/tag";
 import { FooterComponent } from "./components/footer/footer.component";
+import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
+import { ShowsComponent } from "./components/shows/shows.component";
 
 @NgModule({
   imports: [
@@ -53,9 +54,10 @@ import { FooterComponent } from "./components/footer/footer.component";
     ShowIndividualComponent,
     MixcloudComponent,
     PlayerComponent,
-    FutureShowsComponent,
+    ShowsComponent,
     FooterComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    MixcloudItemComponent
   ],
   exports: [],
   entryComponents: [AuthenticateComponent]

@@ -32,14 +32,14 @@ export class MixcloudComponent implements OnInit {
         this.mixesLoading = false;
         this.showAlert = false;
         this.mixcloudMixes = mixcloudResponse.data;
-        // if (pageNumber === 4)
-        //   this.mixcloudMixes = this.mixcloudMixes.slice(
-        //     2,
-        //     mixcloudResponse.data.length
-        //   );
-        // console.log(this.mixcloudMixes);
+        if (pageNumber === 4)
+          this.mixcloudMixes = this.mixcloudMixes.slice(
+            2,
+            mixcloudResponse.data.length
+          );
+        console.log(this.mixcloudMixes);
 
-        // this.mixcloudService.appendMixes(this.mixcloudMixes);
+        this.mixcloudService.appendMixes(this.mixcloudMixes);
       },
       error => {
         this.mixesLoading = false;
@@ -58,22 +58,22 @@ export class MixcloudComponent implements OnInit {
     );
   }
 
-  // paginateMixcloud(fromPage: number) {
-  //   if (
-  //     this.mixcloudPage < fromPage &&
-  //     this.mixcloudService.checkIfPageExists(fromPage)
-  //   )
-  //     this.loadMixcloud(fromPage);
-  //   else {
-  //     console.log("GET EXISITNG");
-  //     this.mixcloudMixes = this.mixcloudService.getExistingMixcloudMixes(
-  //       fromPage
-  //     );
-  //   }
+  paginateMixcloud(fromPage: number) {
+    if (
+      this.mixcloudPage < fromPage &&
+      this.mixcloudService.checkIfPageExists(fromPage)
+    )
+      this.loadMixcloud(fromPage);
+    else {
+      console.log("GET EXISITNG");
+      this.mixcloudMixes = this.mixcloudService.getExistingMixcloudMixes(
+        fromPage
+      );
+    }
 
-  //   this.mixcloudPage = fromPage;
-  //   // this.
-  // }
+    this.mixcloudPage = fromPage;
+    // this.
+  }
 
   onScroll($event) {
     console.log($event.target.scrollTop);

@@ -8,11 +8,11 @@ import { ShowsService } from "src/app/global/services/shows/shows.service";
 import { ResponsiveService } from "src/app/global/services/responsive/responsive.service";
 
 @Component({
-  selector: "app-future-shows",
-  templateUrl: "./future-shows.component.html",
-  styleUrls: ["./future-shows.component.less"]
+  selector: "app-shows",
+  templateUrl: "./shows.component.html",
+  styleUrls: ["./shows.component.less"]
 })
-export class FutureShowsComponent implements OnInit, OnDestroy {
+export class ShowsComponent implements OnInit, OnDestroy {
   public futureShows: ShowModel[];
   public viewport: string;
 

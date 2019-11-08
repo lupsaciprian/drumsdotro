@@ -1,0 +1,40 @@
+<nz-list-item
+  [nzActions]="[starAction, likeAction, msgAction]"
+  [nzExtra]="extra"
+>
+  <ng-template #starAction>
+    <i nz-icon nzType="user" nzTheme="outline" style="margin-right: 8px;"></i>
+    {{ item.listener_count }}</ng-template
+  >
+  <ng-template #likeAction>
+    <i nz-icon nzType="heart" nzTheme="fill" style="margin-right: 8px;"></i>
+    {{ item.favorite_count }}</ng-template
+  >
+  <ng-template #msgAction>
+    <i
+      nz-icon
+      nzType="share-alt"
+      nzTheme="outline"
+      style="margin-right: 8px;"
+    ></i>
+    {{ item.repost_count }}</ng-template
+  >
+  <nz-list-item-meta
+    [nzAvatar]="item.user.pictures.small"
+    [nzTitle]="nzTitle"
+    [nzDescription]="item.description"
+  >
+    <ng-template #nzTitle>
+      <a href="{{ item.url }}" target="_blank">{{ item.name }}</a>
+
+      <div style="margin-top: 4px;">
+        <nz-tag *ngFor="let tag of item.tags">
+          {{ tag.name }}
+        </nz-tag>
+      </div>
+    </ng-template>
+  </nz-list-item-meta>
+  <ng-template #extra>
+    <img width="100" alt="logo" [src]="item.pictures.medium_mobile" />
+  </ng-template>
+</nz-list-item>
