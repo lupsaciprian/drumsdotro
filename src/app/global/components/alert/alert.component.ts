@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from "@angular/core";
 
 export interface AlertInterface {
   type: string;
@@ -11,7 +18,8 @@ export interface AlertInterface {
 @Component({
   selector: "app-alert",
   templateUrl: "./alert.component.html",
-  styleUrls: ["./alert.component.less"]
+  styleUrls: ["./alert.component.less"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlertComponent implements OnInit {
   @Input("alertinfo") alert: AlertInterface;

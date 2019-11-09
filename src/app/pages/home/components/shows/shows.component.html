@@ -12,31 +12,41 @@
       </h2>
     </ng-template>
 
-    <ng-template #futureShowsOffline>
-      <h1>Offline</h1>
+    <ng-template #showsOffline>
+      <app-alert
+        *ngIf="showAlert"
+        [alertinfo]="alertMock"
+        (closeAlert)="closeAlert($event)"
+        (retryLoading)="retryLoadShows($event)"
+      ></app-alert>
     </ng-template>
 
     <!-- [nzGrid]="{ gutter: 8, xs: 24, sm: 12, md: 8, lg: 6, xl: 6 }" -->
     <nz-list
-      *ngIf="futureShows && !futureShowsFeedbackAlert; else futureShowsOffline"
       nzItemLayout="vertical"
-      [nzDataSource]="futureShows"
+      [nzDataSource]="shows"
       [nzRenderItem]="show"
       [nzFooter]="footer"
       [nzPagination]="pagination"
     >
+      <nz-skeleton
+        *ngFor="let skeleton of [0, 1, 2, 3, 4]"
+        [nzLoading]="loadingShows"
+        [nzActive]="true"
+        [nzAvatar]="{ size: 'large', shape: 'square' }"
+      >
+      </nz-skeleton>
+
       <ng-template #show let-show>
         <nz-list-item>
+          >
           <app-show-individual [showItem]="show"></app-show-individual>
         </nz-list-item>
       </ng-template>
 
-      <ng-template #pagination>
-        <nz-pagination
-          [nzPageIndex]="1"
-          [nzTotal]="futureShows.length"
-        ></nz-pagination>
-      </ng-template>
+      <!-- <ng-template #pagination>
+        <nz-pagination [nzPageIndex]="1"></nz-pagination>
+      </ng-template> -->
     </nz-list>
   </nz-card>
 </section>

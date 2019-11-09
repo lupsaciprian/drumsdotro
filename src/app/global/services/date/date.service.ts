@@ -89,7 +89,6 @@ export class DateService {
         showIsToday.isLive = true;
     }
 
-    console.log(showIsToday);
     return showIsToday;
   }
 

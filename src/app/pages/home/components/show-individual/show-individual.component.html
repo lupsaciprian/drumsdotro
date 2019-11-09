@@ -14,7 +14,11 @@
     <div>
       <div>
         <nz-tag
-          *ngIf="show.showIsToday.isToday && show.showIsToday.isLive"
+          *ngIf="
+            show.showIsToday &&
+            show.showIsToday.isToday &&
+            show.showIsToday.isLive
+          "
           style="margin-bottom: 16px;"
           nzColor="#ff5647"
         >
@@ -23,7 +27,11 @@
         </nz-tag>
 
         <nz-tag
-          *ngIf="show.showIsToday.isToday && !show.showIsToday.isLive"
+          *ngIf="
+            show.showIsToday &&
+            show.showIsToday.isToday &&
+            !show.showIsToday.isLive
+          "
           style="margin-bottom: 16px;"
           nzColor="#66E2AA"
         >
@@ -32,7 +40,11 @@
         </nz-tag>
 
         <nz-tag
-          *ngIf="!show.showIsToday.isToday && !show.showIsToday.isLive"
+          *ngIf="
+            show.showIsToday &&
+            !show.showIsToday.isToday &&
+            !show.showIsToday.isLive
+          "
           style="margin-bottom: 16px;"
           nzColor="#6cc9e1"
         >

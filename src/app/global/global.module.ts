@@ -9,7 +9,8 @@ import {
   NzPopoverModule,
   NzInputModule,
   NzCheckboxModule,
-  NzDividerModule
+  NzDividerModule,
+  NzSliderModule
 } from "ng-zorro-antd";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzCardModule } from "ng-zorro-antd/card";
@@ -40,7 +41,8 @@ import { SocialLinksComponent } from "./components/social-links/social-links.com
     NzDividerModule,
     NzFormModule,
     NzInputModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzSliderModule
   ],
   exports: [
     CommonModule,
@@ -55,10 +57,12 @@ import { SocialLinksComponent } from "./components/social-links/social-links.com
     NzCardModule,
     NzFormModule,
     NzInputModule,
+    NzSliderModule,
 
     AlertComponent,
     BannerComponent,
-    SocialLinksComponent
+    SocialLinksComponent,
+    PlayerComponent
   ]
 })
 export class GlobalModule {}

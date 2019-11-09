@@ -15,11 +15,11 @@ export class ShowModel {
     public airHour: string,
     public genre: string,
     public imageAdress: string,
-    public date: Date,
     public once: boolean,
     public recurrence: ShowRecurrence[],
     public scheduled?: string,
     public dateDifference?: string,
-    public showIsToday?: ShowIsToday
+    public showIsToday?: ShowIsToday,
+    public artistRef?: string
   ) {}
 }

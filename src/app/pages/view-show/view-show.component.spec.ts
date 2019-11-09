@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowsSliderComponent } from './shows-slider.component';
+import { ViewShowComponent } from './view-show.component';
 
-describe('ShowsSliderComponent', () => {
-  let component: ShowsSliderComponent;
-  let fixture: ComponentFixture<ShowsSliderComponent>;
+describe('ViewShowComponent', () => {
+  let component: ViewShowComponent;
+  let fixture: ComponentFixture<ViewShowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowsSliderComponent ]
+      declarations: [ ViewShowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowsSliderComponent);
+    fixture = TestBed.createComponent(ViewShowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

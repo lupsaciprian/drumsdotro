@@ -1,1 +1,119 @@
-<p>player works!</p>
+<div class="player">
+  <div nz-row class="fullheight">
+    <div *ngIf="viewport === 'mobile'" nz-col nzXs="1" nzSm="1"></div>
+    <div nz-col nzXs="3" nzSm="3" nzLg="4" class="fullheight">
+      <div
+        id="bottom-logo"
+        class="fullheight flex-container-center flex-item-center"
+      >
+        <img
+          [ngClass]="{
+            rotating: streamStatus.isPlaying && !streamStatus.hadError
+          }"
+          src="http://db.radioline.fr/pictures/radio_eeb08cc855da6c72ffddb6d76667467c/logo200.jpg?size=200"
+          alt="Drums.ro"
+        />
+      </div>
+    </div>
+
+    <div nz-col nzXs="16" nzSm="16" nzLg="6" class="fullheight">
+      <div
+        class="flex-container-center flex-item-center actions fullheight"
+        style="height: 50px;"
+      >
+        <button
+          (click)="playRadio()"
+          class="right-margin"
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          nzShape="circle"
+          [nzLoading]="streamStatus.isLoading"
+          [disabled]="streamStatus.isPlaying"
+        >
+          <i nz-icon nzType="caret-right" nzTheme="fill"></i>
+        </button>
+        <button
+          (click)="pauseRadio()"
+          class="right-margin"
+          nz-button
+          nzType="default"
+          nzSize="large"
+          nzShape="circle"
+          [disabled]="!streamStatus.isPlaying"
+        >
+          <i nz-icon nzType="pause"></i>
+        </button>
+
+        <button
+          nz-tooltip
+          nzTooltipTitle="Stop the Radio Stream"
+          nzTooltipPlacement="top"
+          (click)="stopRadio()"
+          class="right-margin"
+          nz-button
+          nzType="danger"
+          nzSize="large"
+          nzShape="circle"
+          [disabled]="!streamStatus.loaded"
+        >
+          <i nz-icon nzType="minus"></i>
+        </button>
+
+        <button
+          class="right-margin"
+          [ngClass]="{ error: volumeValue === 0 }"
+          nz-button
+          nz-popover
+          nzType="default"
+          nzSize="large"
+          nzShape="circle"
+          nzPopoverTrigger="click"
+          nzPopoverPlacement="top"
+          [nzPopoverContent]="volumeSlider"
+        >
+          <i nz-icon nzType="sound" nzTheme="fill"></i>
+        </button>
+
+        <ng-template #volumeSlider>
+          <div style="height: 96px;">
+            <nz-slider
+              nzVertical
+              [ngModel]="volumeValue"
+              (ngModelChange)="setVolume($event)"
+            ></nz-slider>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="viewport !== 'mobile'" nz-col nzLg="4" class="fullheight">
+      <div class="fullheight flex-container-center flex-item-center">
+        <div class="textcenter">
+          <h3>Now playing:</h3>
+          <p>Feature coming soon...</p>
+        </div>
+      </div>
+    </div>
+
+    <div nz-col nzXs="3" nzSm="3" nzLg="10" class="fullheight">
+      <div class="fullheight flex-container-center flex-item-center">
+        <button
+          nz-popover
+          nzPopoverContent="Drums.ro is an non profit radio station. All donations received go directly towards our server fees."
+          class="actions"
+          nz-button
+          nzType="primary"
+          color="success"
+          nzSize="large"
+          nzShape="round"
+        >
+          <i nz-icon nzType="credit-card" nzTheme="outline"></i>
+          <p *ngIf="viewport !== 'mobile'">Donate</p>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="viewport === 'mobile'" nz-col nzXs="1" nzSm="1"></div>
+  </div>
+</div>

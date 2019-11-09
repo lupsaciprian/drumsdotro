@@ -17,14 +17,19 @@
         class="alert-retry"
         nz-button
         nzSize="default"
-        nzType="default"
         nzGhost="true"
       >
         <i nz-icon nzType="reload" nzTheme="outline"></i>
         Retry
       </button>
 
-      <i (click)="close()" nz-icon nzType="close" nzTheme="outline"></i>
+      <i
+        class="pointer"
+        (click)="close()"
+        nz-icon
+        nzType="close"
+        nzTheme="outline"
+      ></i>
     </div>
   </div>
 </div>
