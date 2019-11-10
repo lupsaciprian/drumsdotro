@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 import { AlertInterface } from "src/app/global/components/alert/alert.component";
 import { MixcloudProviderService } from "./service/mixcloud-provider.service";
@@ -9,6 +9,8 @@ import { MixcloudProviderService } from "./service/mixcloud-provider.service";
   styleUrls: ["./mixcloud.component.less"]
 })
 export class MixcloudComponent implements OnInit {
+  @Input() profile: string;
+
   public mixcloudMixes: any = [];
   public mixcloudPage: number = 1;
   public mixcloudFeedbackAlert: AlertInterface;
@@ -27,17 +29,17 @@ export class MixcloudComponent implements OnInit {
     if (!this.mixcloudService.canLoadNextPage()) return;
 
     this.mixesLoading = true;
-    this.mixcloudService.getMixcloudMixes(pageNumber).subscribe(
+    this.mixcloudService.getMixcloudMixes(pageNumber, this.profile).subscribe(
       mixcloudResponse => {
         this.mixesLoading = false;
         this.showAlert = false;
         this.mixcloudMixes = mixcloudResponse.data;
-        if (pageNumber === 4)
-          this.mixcloudMixes = this.mixcloudMixes.slice(
-            2,
-            mixcloudResponse.data.length
-          );
-        console.log(this.mixcloudMixes);
+        // if (pageNumber === 4)
+        //   this.mixcloudMixes = this.mixcloudMixes.slice(
+        //     2,
+        //     mixcloudResponse.data.length
+        //   );
+        // console.log(this.mixcloudMixes);
 
         this.mixcloudService.appendMixes(this.mixcloudMixes);
       },
@@ -72,7 +74,6 @@ export class MixcloudComponent implements OnInit {
     }
 
     this.mixcloudPage = fromPage;
-    // this.
   }
 
   onScroll($event) {
@@ -83,6 +84,7 @@ export class MixcloudComponent implements OnInit {
     this.showAlert = false;
   }
   retryLoadMixcloud($event: boolean) {
+    this.showAlert = true;
     this.loadMixcloud(this.mixcloudPage);
   }
 

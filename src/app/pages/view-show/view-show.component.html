@@ -190,6 +190,13 @@
         music focused on the art of DJ-ing, blending and manipulation of sound.
       </strong>
     </nz-card>
+
+    <div class="separate-rows">
+      <app-mixcloud
+        *ngIf="show.profiles && show.profiles.mixcloud"
+        [profile]="show.profiles.mixcloud"
+      ></app-mixcloud>
+    </div>
   </div>
 </div>
 

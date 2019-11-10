@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpParams, HttpClient } from "@angular/common/http";
 
-import * as moment from "moment";
-
 @Injectable({
   providedIn: "root"
 })
@@ -12,25 +10,15 @@ export class MixcloudProviderService {
 
   constructor(private http: HttpClient) {}
 
-  getMixcloudMixes(fromPage?: number) {
+  getMixcloudMixes(fromPage?: number, profile?: string) {
     let params = new HttpParams();
-    params = params.append("limit", this.pageLimit.toString());
-    params = params.append(
-      "offset",
-      (fromPage ? fromPage * this.pageLimit : 0).toString()
-    );
-
-    // const dateTo = moment()
-    //   .utc()
-    //   .format("YYYY-MM-DD HH:MM:SS");
-    // const dateFrom = moment(moment().subtract(1, "m"))
-    //   .utc()
-    //   .format("YYYY-MM-DD HH:MM:SS");
-    // params = params.append("since", dateTo);
-    // params = params.append("until", dateFrom);
-
+    // params = params.append("limit", this.pageLimit.toString());
+    // params = params.append(
+    //   "offset",
+    //   (fromPage ? fromPage * this.pageLimit : 0).toString()
+    // );
     return this.http.get<any>(
-      "https://api.mixcloud.com/drumsdotro/cloudcasts/",
+      `https://api.mixcloud.com/${profile}/cloudcasts/`,
       {
         params
       }
@@ -42,7 +30,6 @@ export class MixcloudProviderService {
   // 4 - 9
 
   getExistingMixcloudMixes(fromPage: number) {
-    // 2 * 5 - 1
     let sliceFrom, sliceTo;
     if (fromPage === 1) {
       sliceFrom = 0;
@@ -70,7 +57,6 @@ export class MixcloudProviderService {
   }
 
   checkIfPageExists(page: number): boolean {
-    // if (th)
     console.log(this.allMixes.length, page * this.pageLimit);
     if (this.allMixes.length % this.pageLimit !== 0) return false;
 

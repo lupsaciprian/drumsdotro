@@ -10,16 +10,13 @@ import { HomeRoutingModule } from "./home-routing.module";
 // Components
 import { HomeComponent } from "./home.component";
 import { ShowIndividualComponent } from "./components/show-individual/show-individual.component";
-import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
 import { ShowsComponent } from "./components/shows/shows.component";
 import { FacebookWidgetComponent } from "./components/facebook-widget/facebook-widget.component";
 
 // Zorro
-import { NzCarouselModule } from "ng-zorro-antd/carousel";
 import { NzDividerModule } from "ng-zorro-antd/divider";
 
 import {
-  NzPaginationModule,
   NzSliderModule,
   NzToolTipModule,
   NzAlertModule,
@@ -32,10 +29,7 @@ import {
     GlobalModule,
 
     HomeRoutingModule,
-
-    NzCarouselModule,
     NzDividerModule,
-    NzPaginationModule,
     NzSliderModule,
     NzToolTipModule,
     NzAlertModule,
@@ -45,7 +39,6 @@ import {
   declarations: [
     HomeComponent,
     ShowIndividualComponent,
-    MixcloudComponent,
     ShowsComponent,
     FacebookWidgetComponent
   ],

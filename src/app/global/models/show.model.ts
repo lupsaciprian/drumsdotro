@@ -8,6 +8,13 @@ export interface ShowIsToday {
   isLive: boolean;
 }
 
+export interface Profiles {
+  facebook?: string;
+  mixcloud?: string;
+  soundcloud?: string;
+  facebookEvent?: string;
+}
+
 export class ShowModel {
   constructor(
     public showName: string,
@@ -20,6 +27,7 @@ export class ShowModel {
     public scheduled?: string,
     public dateDifference?: string,
     public showIsToday?: ShowIsToday,
-    public artistRef?: string
+    public artistRef?: string,
+    public profiles?: Profiles
   ) {}
 }

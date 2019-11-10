@@ -12,7 +12,8 @@ import {
   NzDividerModule,
   NzSliderModule,
   NzTagModule,
-  NzListModule
+  NzListModule,
+  NzPaginationModule
 } from "ng-zorro-antd";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzCardModule } from "ng-zorro-antd/card";
@@ -30,6 +31,7 @@ import { SocialLinksComponent } from "./components/social-links/social-links.com
 import { BannerComponent } from "./components/banner/banner.component";
 import { FooterComponent } from "../pages/home/components/footer/footer.component";
 import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
+import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.
     BannerComponent,
     FooterComponent,
     MixcloudItemComponent,
+    MixcloudComponent,
+
     SafePipe,
     PrettyDatePipe,
     NthPipe
@@ -51,6 +55,8 @@ import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.
     NzIconModule,
     NzButtonModule,
     NzPopoverModule,
+    NzCardModule,
+    NzPaginationModule,
     NzGridModule,
     NzDividerModule,
     NzFormModule,
@@ -71,6 +77,7 @@ import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.
     NzGridModule,
     NzDividerModule,
     NzCardModule,
+    NzPaginationModule,
     NzFormModule,
     NzInputModule,
     NzSliderModule,
@@ -83,6 +90,7 @@ import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.
     BannerComponent,
     FooterComponent,
     MixcloudItemComponent,
+    MixcloudComponent,
 
     SafePipe,
     PrettyDatePipe,
