@@ -1,5 +1,202 @@
-<app-banner></app-banner>
+<app-banner [banner]="banner"></app-banner>
 
-<div nz-row class="relative">
-  <app-player></app-player>
+<div nz-row nzGutter="16">
+  <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
+  <div nz-col nzMd="24" nzLg="22" nzXl="18">
+    <nz-page-header
+      (nzBack)="goHome()"
+      nzBackIcon
+      [nzTitle]="navheader"
+      nzSubtitle="This is a subtitle"
+    >
+    </nz-page-header>
+
+    <ng-template #navheader>
+      <i nz-icon nzType="home" nzTheme="outline"></i>
+      Home
+    </ng-template>
+  </div>
+</div>
+
+<div nz-row nzGutter="16">
+  <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
+  <div nz-col [nzSm]="24" [nzMd]="24" [nzLg]="11" [nzXl]="8">
+    <!-- <app-shows-slider></app-shows-slider> -->
+    <nz-card class="bg-info white separate-rows animated fadeInLeft">
+      <div class="flex-item-space-between">
+        <div *ngIf="viewport !== 'mobile'" class="flex-item-center">
+          <i
+            style="font-size: 36px; margin-right: 32px"
+            nz-icon
+            nzType="schedule"
+            nzTheme="fill"
+          ></i>
+        </div>
+
+        <div>
+          <!-- <div class="divider-line" style="margin-bottom: 16px"></div> -->
+          <h1 nz-title class="white">
+            {{ show.recurrence[0].day }}, every
+            {{ show.recurrence[0].week | nth }}
+            week
+          </h1>
+          <p class="white bold" style="font-size: 16px;">
+            Airs on {{ show.scheduled[0] | prettyDate }} at {{ show.airHour }}
+          </p>
+
+          <nz-tag style=" margin-top: 8px" nzColor="#57467b"
+            >Average air time of 90 minutes</nz-tag
+          >
+        </div>
+      </div>
+    </nz-card>
+
+    <nz-card
+      class="white separate-rows  animated zoomInUp"
+      [nzTitle]="timelineTitle"
+    >
+      <ng-template #timelineTitle>
+        <h3>
+          <i
+            style="maright-right: 8px"
+            nz-icon
+            nzType="clock-circle"
+            nzTheme="outline"
+          ></i>
+          Timeline
+        </h3>
+      </ng-template>
+
+      <nz-timeline>
+        <nz-timeline-item>
+          <nz-tag nzColor="#57467b" class="mb-16">20:00</nz-tag>
+
+          <div class="flex-item-space-between">
+            <div class="halfwidth">
+              <img
+                class="box-picture"
+                src="https://scontent.fomr1-1.fna.fbcdn.net/v/t1.0-9/p960x960/66645659_1204163113090056_2196332102058770432_o.jpg?_nc_cat=107&_nc_oc=AQloILbOighf6CxyUBLq8YxPVKx5LKUxz400CE7OH6inW01BI-w6sh_WTyEF9e4G1H4&_nc_ht=scontent.fomr1-1.fna&oh=b665ac907d1fa3f55836367ea2abe7d0&oe=5E4A72F5"
+              />
+            </div>
+
+            <div class="halfwidth">
+              <p class="black" style="font-size: 16px">
+                Host
+              </p>
+
+              <h1 nz-title>
+                <a href=""> Cips</a>
+              </h1>
+
+              <div class="flex-container-row">
+                <i
+                  class="black"
+                  style="font-size: 32px; margin-right: 8px"
+                  nz-icon
+                  nzType="facebook"
+                  nzTheme="fill"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </nz-timeline-item>
+
+        <nz-timeline-item>
+          <nz-tag nzColor="#57467b" class="mb-16">21:00</nz-tag>
+
+          <div class="flex-item-space-between">
+            <div class="halfwidth">
+              <img
+                class="box-picture"
+                src="https://scontent.fomr1-1.fna.fbcdn.net/v/t31.0-8/p960x960/21740951_922576797883418_981221856982634977_o.png?_nc_cat=109&_nc_oc=AQl_G_U8zhffgqkM4WES2dgW94VfncCHvy2WqPhia0XvGug0ydMV4VRoc2PZEgwwG-g&_nc_ht=scontent.fomr1-1.fna&oh=c398e4dd236cf848b7a3ff0882220f37&oe=5E651F4A"
+              />
+            </div>
+
+            <div class="halfwidth">
+              <p class="black" style="font-size: 16px">
+                Guestmix
+              </p>
+
+              <h1 nz-title>
+                <a href=""> Memphys</a>
+              </h1>
+
+              <div class="flex-container-row">
+                <i
+                  class="black"
+                  style="font-size: 32px; margin-right: 8px"
+                  nz-icon
+                  nzType="facebook"
+                  nzTheme="fill"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </nz-timeline-item>
+
+        <nz-timeline-item>
+          <nz-tag class="mb-16" nzColor="#57467b">~ 21:30</nz-tag>
+        </nz-timeline-item>
+      </nz-timeline>
+    </nz-card>
+
+    <!-- <div
+      class="fb-page separate-rows fullwidth no-padding"
+      style="height: 400px;"
+      data-href="https://www.facebook.com/cipsdnb/"
+      data-tabs="timeline"
+      data-width=""
+      data-height=""
+      data-small-header="false"
+      data-adapt-container-width="true"
+      data-hide-cover="false"
+      data-show-facepile="true"
+    ></div> -->
+  </div>
+
+  <div
+    class=" animated fadeInRight"
+    nz-col
+    [nzSm]="24"
+    [nzMd]="24"
+    [nzLg]="11"
+    [nzXl]="10"
+  >
+    <nz-card class="separate-rows" [nzTitle]="descriptionTitle" nzExtra="more">
+      <ng-template #descriptionTitle>
+        <h3>
+          <i
+            style=" margin-top: 8px"
+            nz-icon
+            nzType="info-circle"
+            nzTheme="outline"
+          ></i>
+          Description
+        </h3>
+      </ng-template>
+
+      <strong>
+        In acoustics and audio, a transient is a high amplitude, short-duration
+        sound at the beginning of a waveform that occurs in phenomena such as
+        musical sounds, noises or speech. (Wikipedia)
+        <br /><br />
+        This radio show is all about appreciating the sharp and well defined
+        transients that drum & bass music has to offer. Beyond technicalities,
+        we strive for the music that can steal your focus and make your head
+        shake while adjusting to different moods in a relatively fast-paced
+        manner. <br /><br />
+        The musical themes approached are not specific and multiple subgenres
+        are considered, however, the show includes a more energetic style of
+        music focused on the art of DJ-ing, blending and manipulation of sound.
+      </strong>
+    </nz-card>
+  </div>
+</div>
+
+<div nz-row class="separate-rows">
+  <div nz-col nzSm="0" nzLg="3"></div>
+  <div nz-col nzSm="24" nzLg="18">
+    <app-footer></app-footer>
+  </div>
+  <div nz-col nzSm="0" nzLg="3"></div>
 </div>

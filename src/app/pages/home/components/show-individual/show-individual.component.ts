@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { ShowModel } from "src/app/global/models/show.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-show-individual",
@@ -14,7 +15,11 @@ import { ShowModel } from "src/app/global/models/show.model";
 })
 export class ShowIndividualComponent implements OnInit {
   @Input("showItem") show: ShowModel;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  goToViewShow() {
+    this.router.navigate(["/show", this.show.showName]);
+  }
 }

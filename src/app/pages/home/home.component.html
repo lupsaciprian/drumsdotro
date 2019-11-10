@@ -1,15 +1,31 @@
-<app-banner></app-banner>
-
 <!-- <iframe src="http://radio.drums.ro:8000/played.html" width="80%" height="110">
 </iframe> -->
+<app-banner [banner]="banner"></app-banner>
 
 <div nz-row nzGutter="16">
   <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
-  <div nz-col [nzSm]="24" [nzMd]="24" [nzLg]="11" [nzXl]="8">
-    <!-- <app-shows-slider></app-shows-slider> -->
+  <div
+    class=" animated fadeInLeft"
+    nz-col
+    [nzSm]="24"
+    [nzMd]="24"
+    [nzLg]="11"
+    [nzXl]="8"
+  >
     <app-shows></app-shows>
+
+    <div class="separate-rows">
+      <app-facebook-widget></app-facebook-widget>
+    </div>
   </div>
-  <div nz-col [nzSm]="24" [nzMd]="24" [nzLg]="11" [nzXl]="10">
+  <div
+    class=" animated fadeInRight"
+    nz-col
+    [nzSm]="24"
+    [nzMd]="24"
+    [nzLg]="11"
+    [nzXl]="10"
+  >
     <app-mixcloud></app-mixcloud>
   </div>
 </div>
@@ -28,8 +44,4 @@
     <app-footer></app-footer>
   </div>
   <div nz-col nzSm="0" nzLg="3"></div>
-</div>
-
-<div nz-row class="relative">
-  <app-player></app-player>
 </div>

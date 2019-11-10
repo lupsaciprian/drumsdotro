@@ -92,6 +92,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.playerService.isPlaying.unsubscribe();
-    this.volumeDebouncerSub.unsubscribe();
+    if (this.volumeDebouncerSub) this.volumeDebouncerSub.unsubscribe();
   }
 }

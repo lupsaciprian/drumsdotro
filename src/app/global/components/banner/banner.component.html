@@ -10,9 +10,9 @@
       <!--   -->
       <img
         id="banner-logo"
-        class="animated infinite tada slower"
+        [ngClass]="banner.classes.imageClasses"
         id="main-logo"
-        src="./../../../assets/img/drumsro_transparent.png"
+        [src]="banner.imageAdress"
         alt="Drums.ro Logo"
       />
     </div>
@@ -20,8 +20,8 @@
   <div nz-col nzMd="12" nzSm="24" class="fullheight separate-rows">
     <div nz-row nzType="flex" nzJustify="center" nzAlign="middle">
       <div nz-col nzLg="12" nzMd="24" nzSm="24" class="textcenter">
-        <h1>24/7 Drums.ro - Drum&Bass Online Radio Station</h1>
-        <h3>drum&bass / jungle / breakbeat / dubstep / oldskool / hardcore</h3>
+        <h1 [ngClass]="banner.classes.headingClasses">{{ banner.heading }}</h1>
+        <h3>{{ banner.description }}</h3>
       </div>
 
       <div

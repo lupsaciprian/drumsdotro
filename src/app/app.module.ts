@@ -20,18 +20,15 @@ import en from "@angular/common/locales/en";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 
-// Made Modules
-import { HomeModule } from "./pages/home/home.module";
-import { AdminModule } from "./pages/admin/admin.module";
-import { ViewShowModule } from "./pages/view-show/view-show.module";
-
 // Env
 import { environment } from "../environments/environment";
+import { GlobalModule } from "./global/global.module";
+import { AuthenticateComponent } from "./global/components/authenticate/authenticate.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AuthenticateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,11 +39,10 @@ registerLocaleData(en);
     AngularFireModule.initializeApp(environment.firebase, "drumsdotro"),
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    HomeModule,
-    AdminModule,
-    ViewShowModule
+    GlobalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_GB }],
+  entryComponents: [AuthenticateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -10,11 +10,17 @@ const routes: Routes = [
   },
   {
     path: "admin",
+    data: {
+      animation: "isRight"
+    },
     loadChildren: () =>
       import("./pages/admin/admin.module").then(m => m.AdminModule)
   },
   {
-    path: "show",
+    path: "show/:showName",
+    data: {
+      animation: "isRight"
+    },
     loadChildren: () =>
       import("./pages/view-show/view-show.module").then(m => m.ViewShowModule)
   }

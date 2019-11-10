@@ -7,6 +7,7 @@ import { DateService } from "src/app/global/services/date/date.service";
 import { ResponsiveService } from "src/app/global/services/responsive/responsive.service";
 import { AlertInterface } from "src/app/global/components/alert/alert.component";
 import { ShowsService } from "src/app/global/services/shows/shows.service";
+import { TouchSequence } from "selenium-webdriver";
 
 @Component({
   selector: "app-shows",
@@ -34,33 +35,14 @@ export class ShowsComponent implements OnInit, OnDestroy {
     private responsiveService: ResponsiveService
   ) {}
 
-  // calculateShowAirTimes() {
-  //   for (let show of this.shows) {
-  //     this.dateService.calculateShowFutureSchedule(show);
-  //     if (!show.dateDifference)
-  //       show.dateDifference = this.dateService.fromNow(show.scheduled[0]);
-
-  //     show.showIsToday = this.dateService.isLiveOrToday(
-  //       show.recurrence[0],
-  //       show.airHour
-  //     );
-
-  //     if (show.showIsToday.isToday) {
-  //       this.anyShowsToday = true;
-  //     }
-  //   }
-  // }
-
-  closeAlert($event) {
+  public closeAlert($event) {
     this.showAlert = !this.showAlert;
   }
-  retryLoadShows($event) {
-    // this.shows = this.showsService.getShows();
+  public retryLoadShows($event) {
+    this.getShows();
   }
 
-  ngOnInit() {
-    this.viewport = this.responsiveService.viewport;
-
+  private getShows() {
     this.showsObservable = this.showsService.getShowsObservable();
 
     this.loadingShows = true;
@@ -86,7 +68,18 @@ export class ShowsComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngOnInit() {
+    this.viewport = this.responsiveService.viewport;
+
+    if (!this.showsService.shows) {
+      this.getShows();
+    } else {
+      this.shows = this.showsService.shows;
+    }
+  }
+
   ngOnDestroy() {
-    this.updateShowAiringInterval.unsubscribe();
+    if (this.updateShowAiringInterval)
+      this.updateShowAiringInterval.unsubscribe();
   }
 }

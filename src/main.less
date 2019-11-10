@@ -10,8 +10,7 @@
 // .margins-loop (@iterations);
 
 @grey-shade: rgba(0, 0, 0, 0.65);
-
-h1,
+@grey: rgba(0, 0, 0, 0.85);
 h2,
 h3,
 h4,
@@ -45,6 +44,9 @@ p {
 .black {
   color: @black;
 }
+.grey {
+  color: @grey;
+}
 
 .bg-primary {
   background: @primary-color;
@@ -67,6 +69,9 @@ p {
 .bg-black {
   background: @black;
 }
+.bg-grey {
+  background: @grey;
+}
 
 .padding-lg {
   padding: @padding-lg;
@@ -81,8 +86,24 @@ p {
   padding: @padding-xs;
 }
 
+.mb-8 {
+  margin-bottom: 8px;
+}
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
 .radius-sm {
   border-radius: @border-radius-sm;
+}
+
+.box-picture {
+  max-width: 80%;
+  margin-right: 16px;
 }
 
 .relative {
@@ -96,14 +117,26 @@ p {
 .fullwidth {
   width: 100% !important;
 }
+.halfwidth {
+  width: 50% !important;
+}
 .fullheight {
   height: 100% !important;
+}
+.halfheight {
+  height: 50% !important;
 }
 .maxfullwidth {
   max-width: 100% !important;
 }
+.maxhalfwidth {
+  max-width: 50% !important;
+}
 .maxfullheight {
   max-height: 100% !important;
+}
+.maxhalfheight {
+  max-height: 50% !important;
 }
 
 .pointer {
@@ -127,4 +160,20 @@ p {
   border: 1px solid @grey-shade;
   border-radius: @border-radius-sm;
   margin: 2px 0;
+}
+
+.grey-box {
+  padding: @padding-lg;
+}
+
+@media only screen and (max-width: 768px) {
+  .separate-rows {
+    margin: 0;
+  }
+  .padding-lg {
+    padding: @padding-sm;
+  }
+  .padding-md {
+    padding: @padding-xs;
+  }
 }

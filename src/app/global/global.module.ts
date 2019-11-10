@@ -10,7 +10,8 @@ import {
   NzInputModule,
   NzCheckboxModule,
   NzDividerModule,
-  NzSliderModule
+  NzSliderModule,
+  NzTagModule
 } from "ng-zorro-antd";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzCardModule } from "ng-zorro-antd/card";
@@ -19,15 +20,23 @@ import { NzFormModule } from "ng-zorro-antd/form";
 // Components
 import { AlertComponent } from "./components/alert/alert.component";
 import { PlayerComponent } from "./components/player/player.component";
-import { BannerComponent } from "./components/banner/banner.component";
 import { SocialLinksComponent } from "./components/social-links/social-links.component";
+import { BannerComponent } from "./components/banner/banner.component";
+import { FooterComponent } from "../pages/home/components/footer/footer.component";
+import { SafePipe } from "./pipes/safe.pipe";
+import { PrettyDatePipe } from "./pipes/pretty-date.pipe";
+import { NthPipe } from "./pipes/nth.pipe";
 
 @NgModule({
   declarations: [
     AlertComponent,
     PlayerComponent,
+    SocialLinksComponent,
     BannerComponent,
-    SocialLinksComponent
+    FooterComponent,
+    SafePipe,
+    PrettyDatePipe,
+    NthPipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +51,8 @@ import { SocialLinksComponent } from "./components/social-links/social-links.com
     NzFormModule,
     NzInputModule,
     NzCheckboxModule,
-    NzSliderModule
+    NzSliderModule,
+    NzTagModule
   ],
   exports: [
     CommonModule,
@@ -58,11 +68,17 @@ import { SocialLinksComponent } from "./components/social-links/social-links.com
     NzFormModule,
     NzInputModule,
     NzSliderModule,
+    NzTagModule,
 
     AlertComponent,
-    BannerComponent,
     SocialLinksComponent,
-    PlayerComponent
+    PlayerComponent,
+    BannerComponent,
+    FooterComponent,
+
+    SafePipe,
+    PrettyDatePipe,
+    NthPipe
   ]
 })
 export class GlobalModule {}

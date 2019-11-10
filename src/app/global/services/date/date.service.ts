@@ -92,6 +92,11 @@ export class DateService {
     return showIsToday;
   }
 
+  public prettyPipe(date) {
+    console.log(date);
+    return moment(date, "YYYY-MM-DD").format("MMMM Do YYYY");
+  }
+
   private currentWeekOfMonth(date) {
     let weekInYearIndex = date.week();
     if (date.year() !== date.weekYear()) {

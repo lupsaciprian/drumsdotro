@@ -11,8 +11,8 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { ShowIndividualComponent } from "./components/show-individual/show-individual.component";
 import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
-
-import { AuthenticateComponent } from "src/app/global/components/authenticate/authenticate.component";
+import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
+import { ShowsComponent } from "./components/shows/shows.component";
 
 // Zorro
 import { NzCarouselModule } from "ng-zorro-antd/carousel";
@@ -26,10 +26,8 @@ import {
   NzNotificationModule,
   NzSkeletonModule
 } from "ng-zorro-antd";
-import { NzTagModule } from "ng-zorro-antd/tag";
-import { FooterComponent } from "./components/footer/footer.component";
-import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
-import { ShowsComponent } from "./components/shows/shows.component";
+import { FacebookWidgetComponent } from './components/facebook-widget/facebook-widget.component';
+
 @NgModule({
   imports: [
     GlobalModule,
@@ -44,7 +42,6 @@ import { ShowsComponent } from "./components/shows/shows.component";
     NzToolTipModule,
     NzAlertModule,
     NzNotificationModule,
-    NzTagModule,
     NzSkeletonModule
   ],
   declarations: [
@@ -52,11 +49,10 @@ import { ShowsComponent } from "./components/shows/shows.component";
     ShowIndividualComponent,
     MixcloudComponent,
     ShowsComponent,
-    FooterComponent,
-    AuthenticateComponent,
-    MixcloudItemComponent
+    MixcloudItemComponent,
+    FacebookWidgetComponent
   ],
   exports: [],
-  entryComponents: [AuthenticateComponent]
+  entryComponents: []
 })
 export class HomeModule {}

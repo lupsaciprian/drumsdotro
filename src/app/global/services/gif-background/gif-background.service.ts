@@ -8,8 +8,8 @@ export class GifBackgroundService {
   private gifs: string[] = [
     "https://media.giphy.com/media/YqXRkTZQXA092/giphy.gif",
     "http://giphygifs.s3.amazonaws.com/media/8iiUNIX5fw0c8/giphy.gif",
-    "http://blog.dubspot.com/files/2016/02/DJ-Shiftee-Scratching.gif",
-    "https://www.prodjschool.nl/wp-content/uploads/2019/07/tumblr_m1zmeccmQy1r6b9rbo1_500.gif",
+    "http://25.media.tumblr.com/ce3be227e1a5aa8abcc977895d7c202f/tumblr_ml8i0k56sj1qb21tjo2_500.gif",
+    "https://media3.giphy.com/media/1ULCgkWc2IiXJyxp5o/giphy.gif",
     "https://media1.giphy.com/media/Q76vhoFy1XvGw/giphy.gif"
   ];
   private activeGif = 0;
