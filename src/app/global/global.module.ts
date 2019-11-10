@@ -11,11 +11,17 @@ import {
   NzCheckboxModule,
   NzDividerModule,
   NzSliderModule,
-  NzTagModule
+  NzTagModule,
+  NzListModule
 } from "ng-zorro-antd";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzCardModule } from "ng-zorro-antd/card";
 import { NzFormModule } from "ng-zorro-antd/form";
+
+// Pipes
+import { SafePipe } from "./pipes/safe.pipe";
+import { PrettyDatePipe } from "./pipes/pretty-date.pipe";
+import { NthPipe } from "./pipes/nth.pipe";
 
 // Components
 import { AlertComponent } from "./components/alert/alert.component";
@@ -23,9 +29,7 @@ import { PlayerComponent } from "./components/player/player.component";
 import { SocialLinksComponent } from "./components/social-links/social-links.component";
 import { BannerComponent } from "./components/banner/banner.component";
 import { FooterComponent } from "../pages/home/components/footer/footer.component";
-import { SafePipe } from "./pipes/safe.pipe";
-import { PrettyDatePipe } from "./pipes/pretty-date.pipe";
-import { NthPipe } from "./pipes/nth.pipe";
+import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { NthPipe } from "./pipes/nth.pipe";
     SocialLinksComponent,
     BannerComponent,
     FooterComponent,
+    MixcloudItemComponent,
     SafePipe,
     PrettyDatePipe,
     NthPipe
@@ -52,7 +57,8 @@ import { NthPipe } from "./pipes/nth.pipe";
     NzInputModule,
     NzCheckboxModule,
     NzSliderModule,
-    NzTagModule
+    NzTagModule,
+    NzListModule
   ],
   exports: [
     CommonModule,
@@ -69,12 +75,14 @@ import { NthPipe } from "./pipes/nth.pipe";
     NzInputModule,
     NzSliderModule,
     NzTagModule,
+    NzListModule,
 
     AlertComponent,
     SocialLinksComponent,
     PlayerComponent,
     BannerComponent,
     FooterComponent,
+    MixcloudItemComponent,
 
     SafePipe,
     PrettyDatePipe,

@@ -11,13 +11,13 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { ShowIndividualComponent } from "./components/show-individual/show-individual.component";
 import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
-import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
 import { ShowsComponent } from "./components/shows/shows.component";
+import { FacebookWidgetComponent } from "./components/facebook-widget/facebook-widget.component";
 
 // Zorro
 import { NzCarouselModule } from "ng-zorro-antd/carousel";
 import { NzDividerModule } from "ng-zorro-antd/divider";
-import { NzListModule } from "ng-zorro-antd/list";
+
 import {
   NzPaginationModule,
   NzSliderModule,
@@ -26,7 +26,6 @@ import {
   NzNotificationModule,
   NzSkeletonModule
 } from "ng-zorro-antd";
-import { FacebookWidgetComponent } from './components/facebook-widget/facebook-widget.component';
 
 @NgModule({
   imports: [
@@ -36,7 +35,6 @@ import { FacebookWidgetComponent } from './components/facebook-widget/facebook-w
 
     NzCarouselModule,
     NzDividerModule,
-    NzListModule,
     NzPaginationModule,
     NzSliderModule,
     NzToolTipModule,
@@ -49,7 +47,6 @@ import { FacebookWidgetComponent } from './components/facebook-widget/facebook-w
     ShowIndividualComponent,
     MixcloudComponent,
     ShowsComponent,
-    MixcloudItemComponent,
     FacebookWidgetComponent
   ],
   exports: [],
