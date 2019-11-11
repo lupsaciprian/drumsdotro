@@ -4,8 +4,11 @@ import {
   Input,
   ChangeDetectionStrategy
 } from "@angular/core";
-import { ShowModel } from "src/app/global/models/show.model";
 import { Router } from "@angular/router";
+
+import { ShowModel } from "src/app/global/models/show.model";
+
+import { ResponsiveService } from "src/app/global/services/responsive/responsive.service";
 
 @Component({
   selector: "app-show-individual",
@@ -15,9 +18,16 @@ import { Router } from "@angular/router";
 })
 export class ShowIndividualComponent implements OnInit {
   @Input("showItem") show: ShowModel;
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private responsiveService: ResponsiveService
+  ) {}
 
-  ngOnInit() {}
+  public viewport: string;
+
+  ngOnInit() {
+    this.viewport = this.responsiveService.viewport;
+  }
 
   goToViewShow() {
     this.router.navigate(["/show", this.show.showName]);

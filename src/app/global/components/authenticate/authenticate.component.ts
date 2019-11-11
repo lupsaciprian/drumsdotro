@@ -25,6 +25,11 @@ export class AuthenticateComponent implements OnInit {
     public afAuth: AngularFireAuth
   ) {}
 
+  loginByUsername() {
+    console.log(this.loginForm);
+    return;
+  }
+
   loginWithService(service: string) {
     this.loadingLogin = true;
     console.log(this.afAuth);

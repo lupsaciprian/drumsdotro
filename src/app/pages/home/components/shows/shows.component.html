@@ -22,12 +22,13 @@
     </ng-template>
 
     <!-- [nzGrid]="{ gutter: 8, xs: 24, sm: 12, md: 8, lg: 6, xl: 6 }" -->
+
+    <!--[nzFooter]="footer"
+      [nzPagination]="pagination" -->
     <nz-list
       nzItemLayout="vertical"
       [nzDataSource]="shows"
       [nzRenderItem]="show"
-      [nzFooter]="footer"
-      [nzPagination]="pagination"
     >
       <nz-skeleton
         *ngFor="let skeleton of [0, 1, 2, 3, 4]"

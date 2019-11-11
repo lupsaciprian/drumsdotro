@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "drumsdotroradio": {
+      "hosting": {
+        "drumsdotro": [
+          "drumsdotroradio"
+        ]
+      }
+    }
+  }
+}
