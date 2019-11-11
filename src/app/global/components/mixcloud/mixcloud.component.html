@@ -1,5 +1,9 @@
 <section>
-  <nz-card [nzTitle]="radioShowsTitle" [nzExtra]="more">
+  <nz-card
+    [nzTitle]="radioShowsTitle"
+    [nzExtra]="more"
+    [nzBodyStyle]="{ padding: showAlert ? '0px' : '24px' }"
+  >
     <ng-template #radioShowsTitle>
       <h2>
         <i
@@ -20,6 +24,7 @@
       <app-alert
         *ngIf="showAlert"
         [alertinfo]="mixcloudFeedbackAlert"
+        [loading]="mixesLoading"
         (closeAlert)="closeAlert($event)"
         (retryLoading)="retryLoadMixcloud($event)"
       ></app-alert>
@@ -31,20 +36,40 @@
       [nzLoading]="mixesLoading"
       [nzItemLayout]="'vertical'"
       [nzRenderItem]="item"
-      [nzPagination]="pagination"
+      [nzLoadMore]="loadMore"
     >
       <ng-template #item let-item>
         <app-mixcloud-item [mixcloudItem]="item"></app-mixcloud-item>
       </ng-template>
 
-      <ng-template #pagination>
-        <!-- (nzPageIndexChange)="loadData($event)" -->
-        <nz-pagination
-          [nzPageIndex]="mixcloudPage"
-          [nzTotal]="totalMixcloudMixes"
-          [nzPageSize]="pageLimit"
-          (nzPageIndexChange)="paginateMixcloud($event)"
-        ></nz-pagination>
+      <ng-template #loadMore>
+        <nz-divider></nz-divider>
+
+        <div
+          class="mb-8"
+          *ngIf="
+            mixcloudMixes.length > 0 && mixcloudMixes.length % pageLimit === 0
+          "
+        >
+          <button
+            class="bold"
+            nz-button
+            nzBlock="true"
+            [disabled]="mixesLoading"
+            (click)="onLoadMore()"
+          >
+            Load More
+          </button>
+        </div>
+
+        <a
+          [href]="'https://www.mixcloud.com/' + profile"
+          nz-button
+          nzBlock="true"
+          nzType="dashed"
+          target="_blank"
+          >Visit Mixcloud Page</a
+        >
       </ng-template>
     </nz-list>
   </nz-card>

@@ -1,70 +1,60 @@
 import { Injectable } from "@angular/core";
-import { HttpParams, HttpClient } from "@angular/common/http";
+import {
+  HttpParams,
+  HttpClient,
+  HttpErrorResponse
+} from "@angular/common/http";
+import { map, catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class MixcloudProviderService {
-  public allMixes: any[] = [];
   public pageLimit: number = 5;
 
   constructor(private http: HttpClient) {}
 
   getMixcloudMixes(fromPage?: number, profile?: string) {
+    console.log("FROM", fromPage);
     let params = new HttpParams();
-    // params = params.append("limit", this.pageLimit.toString());
-    // params = params.append(
-    //   "offset",
-    //   (fromPage ? fromPage * this.pageLimit : 0).toString()
-    // );
-    return this.http.get<any>(
-      `https://api.mixcloud.com/${profile}/cloudcasts/`,
-      {
-        params
-      }
-    );
-  }
-
-  // 30 Items
-  // page 2
-  // 4 - 9
-
-  getExistingMixcloudMixes(fromPage: number) {
-    let sliceFrom, sliceTo;
-    if (fromPage === 1) {
-      sliceFrom = 0;
-      sliceTo = this.pageLimit;
-    } else {
-      sliceFrom = (fromPage - 1) * this.pageLimit - 1;
-      sliceTo = fromPage * this.pageLimit - 1;
+    if (fromPage > 1) {
+      params = params.append("limit", this.pageLimit.toString());
+      params = params.append(
+        "offset",
+        (fromPage ? fromPage * this.pageLimit : 0).toString()
+      );
     }
+    return this.http
+      .get<any>(`https://api.mixcloud.com/${profile}zx/cloudcasts/`, {
+        params
+      })
+      .pipe(
+        map(mixes => {
+          console.log(mixes, mixes.data.slice(0, this.pageLimit));
+          if (mixes.data.length > this.pageLimit) {
+            return {
+              ...mixes,
+              data: mixes.data.slice(0, this.pageLimit)
+            };
+          }
+          return mixes;
+        }),
+        catchError((errorResponse: HttpErrorResponse) => {
+          console.log(errorResponse);
+          if (
+            errorResponse.error &&
+            errorResponse.error.error &&
+            errorResponse.error.error.message
+          )
+            return throwError(
+              `${errorResponse.error.error.message} (${errorResponse.error.error.type})`
+            );
 
-    console.log(
-      "GETTING PREVIOUS",
-      sliceFrom,
-      sliceTo,
-      this.allMixes.slice(sliceFrom, sliceTo)
-    );
-    return this.allMixes.slice(sliceFrom, sliceTo);
-  }
-
-  appendMixes(mixes: any[]) {
-    this.allMixes = this.allMixes.concat(mixes);
-  }
-
-  canLoadNextPage(): boolean {
-    return this.allMixes.length % this.pageLimit === 0;
-  }
-
-  checkIfPageExists(page: number): boolean {
-    console.log(this.allMixes.length, page * this.pageLimit);
-    if (this.allMixes.length % this.pageLimit !== 0) return false;
-
-    return this.allMixes.length < page * this.pageLimit;
-  }
-
-  totalMixcloudMixesLength() {
-    if (this.canLoadNextPage()) return this.allMixes.length + 1;
-    else return this.allMixes.length;
+          return throwError(
+            `An network error occured while loading Mixcloud. (${errorResponse.name})`
+          );
+        })
+      );
   }
 }

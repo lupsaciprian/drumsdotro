@@ -5,7 +5,7 @@
 
   <div class="fullwidth flex-item-space-between">
     <div>
-      <p nz-text class="alert-title">{{ alert.title }}</p>
+      <p nz-text class="alert-title bold">{{ alert.title }}</p>
       <span nz-text nzType="secondary" class="alert-description">{{
         alert.description
       }}</span>
@@ -18,18 +18,20 @@
         nz-button
         nzType="danger"
         nzSize="default"
+        [nzLoading]="loading"
+        [disabled]="disableReload"
       >
         <i nz-icon nzType="reload" nzTheme="outline"></i>
         Retry
       </button>
 
-      <i
+      <!-- <i
         class="pointer"
         (click)="close()"
         nz-icon
         nzType="close"
         nzTheme="outline"
-      ></i>
+      ></i> -->
     </div>
   </div>
 </div>

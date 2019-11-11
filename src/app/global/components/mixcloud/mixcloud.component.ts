@@ -13,82 +13,55 @@ export class MixcloudComponent implements OnInit {
 
   public mixcloudMixes: any = [];
   public mixcloudPage: number = 1;
+
   public mixcloudFeedbackAlert: AlertInterface;
   public mixesLoading: boolean = false;
   public showAlert: boolean = false;
 
-  get totalMixcloudMixes() {
-    return this.mixcloudService.totalMixcloudMixesLength();
-  }
+  public pageLimit: number = 5;
 
   constructor(private mixcloudService: MixcloudProviderService) {}
 
-  public pageLimit = this.mixcloudService.pageLimit;
-
   loadMixcloud(pageNumber: number = 1) {
-    if (!this.mixcloudService.canLoadNextPage()) return;
-
     this.mixesLoading = true;
+
     this.mixcloudService.getMixcloudMixes(pageNumber, this.profile).subscribe(
       mixcloudResponse => {
         this.mixesLoading = false;
         this.showAlert = false;
-        this.mixcloudMixes = mixcloudResponse.data;
-        // if (pageNumber === 4)
-        //   this.mixcloudMixes = this.mixcloudMixes.slice(
-        //     2,
-        //     mixcloudResponse.data.length
-        //   );
-        // console.log(this.mixcloudMixes);
 
-        this.mixcloudService.appendMixes(this.mixcloudMixes);
+        this.mixcloudMixes = this.mixcloudMixes.concat(mixcloudResponse.data);
       },
       error => {
         this.mixesLoading = false;
-        this.showAlert = true;
-
-        let message;
-        if (error.error && error.error.error && error.error.error.message)
-          message = error.error.error.message;
+        if (!this.showAlert) this.showAlert = true;
 
         this.mixcloudFeedbackAlert = {
           type: "danger",
           title: "Error loading Mixcloud tab...",
-          description: message ? message : "Could not load Mixcloud tab."
+          description: error
         };
       }
     );
   }
 
-  paginateMixcloud(fromPage: number) {
-    if (
-      this.mixcloudPage < fromPage &&
-      this.mixcloudService.checkIfPageExists(fromPage)
-    )
-      this.loadMixcloud(fromPage);
-    else {
-      console.log("GET EXISITNG");
-      this.mixcloudMixes = this.mixcloudService.getExistingMixcloudMixes(
-        fromPage
-      );
-    }
-
-    this.mixcloudPage = fromPage;
-  }
-
-  onScroll($event) {
-    console.log($event.target.scrollTop);
+  onLoadMore() {
+    this.mixcloudPage++;
+    this.loadMixcloud(this.mixcloudPage);
   }
 
   closeAlert($event: boolean) {
     this.showAlert = false;
   }
   retryLoadMixcloud($event: boolean) {
+    this.mixesLoading = true;
     this.showAlert = true;
-    this.loadMixcloud(this.mixcloudPage);
+    setTimeout(() => {
+      this.loadMixcloud(this.mixcloudPage);
+    }, 2000);
   }
 
   ngOnInit() {
-    this.loadMixcloud(this.mixcloudPage);
+    this.loadMixcloud();
   }
 }

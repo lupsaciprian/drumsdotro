@@ -13,7 +13,10 @@ import {
   NzSliderModule,
   NzTagModule,
   NzListModule,
-  NzPaginationModule
+  NzPaginationModule,
+  NzSkeletonComponent,
+  NzSkeletonModule,
+  NzSpinModule
 } from "ng-zorro-antd";
 import { NzGridModule } from "ng-zorro-antd/grid";
 import { NzCardModule } from "ng-zorro-antd/card";
@@ -64,7 +67,9 @@ import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
     NzCheckboxModule,
     NzSliderModule,
     NzTagModule,
-    NzListModule
+    NzListModule,
+    NzSkeletonModule,
+    NzSpinModule
   ],
   exports: [
     CommonModule,
@@ -83,6 +88,8 @@ import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
     NzSliderModule,
     NzTagModule,
     NzListModule,
+    NzSkeletonComponent,
+    NzSpinModule,
 
     AlertComponent,
     SocialLinksComponent,

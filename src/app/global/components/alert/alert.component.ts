@@ -4,6 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  OnChanges,
   ChangeDetectionStrategy
 } from "@angular/core";
 
@@ -21,24 +22,36 @@ export interface AlertInterface {
   styleUrls: ["./alert.component.less"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent implements OnInit, OnChanges {
   @Input("alertinfo") alert: AlertInterface;
+  @Input() loading: boolean;
 
   @Output() closeAlert = new EventEmitter<boolean>();
   @Output() retryLoading = new EventEmitter<boolean>();
 
+  public timesTriedReload: number = 0;
+  public disableReload: boolean = false;
+
+  private retryLimit: number = 4;
+
   constructor() {}
 
-  close() {
+  close(): void {
     this.closeAlert.emit(true);
   }
 
-  retryLoad() {
-    this.closeAlert.emit(true);
+  retryLoad(): void {
+    this.timesTriedReload++;
+    if (this.timesTriedReload >= this.retryLimit) {
+      this.disableReload = true;
+      return;
+    }
+
+    this.close();
     this.retryLoading.emit(true);
   }
 
-  setAlert(): string {
+  setAlert(): void {
     if (!this.alert) return;
 
     switch (this.alert.type) {
@@ -59,6 +72,10 @@ export class AlertComponent implements OnInit {
         this.alert.class = "info-alert";
         this.alert.icon = "info-circle";
     }
+  }
+
+  ngOnChanges() {
+    this.setAlert();
   }
 
   ngOnInit() {
