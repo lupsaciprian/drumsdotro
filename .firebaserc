@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "drumsdotroradio": {
-      "hosting": {
-        "drumsdotro": [
-          "drumsdotroradio"
-        ]
-      }
-    }
+  "projects": {
+    "default": "drumsdotroradio"
   }
 }
