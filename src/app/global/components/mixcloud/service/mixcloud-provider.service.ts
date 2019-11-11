@@ -26,7 +26,7 @@ export class MixcloudProviderService {
       );
     }
     return this.http
-      .get<any>(`https://api.mixcloud.com/${profile}zx/cloudcasts/`, {
+      .get<any>(`https://api.mixcloud.com/${profile}/cloudcasts/`, {
         params
       })
       .pipe(
