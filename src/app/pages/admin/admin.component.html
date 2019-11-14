@@ -1,14 +1,14 @@
-<app-banner></app-banner>
+<app-banner [banner]="banner"></app-banner>
 
 <div nz-row nzGutter="16" class="separate-rows">
   <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
   <div nz-col nzSm="24" nzMd="24" nzLg="22" nzXl="18">
-    <nz-card style="height: 400px;">
+    <nz-card>
       <nz-tabset nzSize="large" nzLinkRouter>
         <nz-tab>
           <a
             nz-tab-link
-            [routerLink]="['.']"
+            [routerLink]="['manage-show']"
             [queryParams]="{ tab: 'one' }"
             queryParamsHandling="merge"
           >
@@ -65,9 +65,13 @@
         </nz-tab>
       </nz-tabset>
 
-      <div>
-        <h1>Hello</h1>
-        <router-outlet>Loading</router-outlet>
+      <button type="button" nz-button nzType="default" (click)="goHome()">
+        <i nz-icon nzType="home" nzTheme="outline"></i>
+        Home
+      </button>
+
+      <div style="height: 800px; overflow-y: scroll; padding: 5% 12.5%">
+        <router-outlet class="flex-item-center"></router-outlet>
       </div>
     </nz-card>
   </div>

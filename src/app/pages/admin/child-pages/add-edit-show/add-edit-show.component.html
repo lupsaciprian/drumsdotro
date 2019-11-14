@@ -1,0 +1,82 @@
+<h1>
+  <i nz-icon nzType="plus" nzTheme="outline"></i>
+  Add New Show
+</h1>
+<nz-divider></nz-divider>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <div nz-col>
+    <div nzMd="12">
+      <nz-form-item>
+        <nz-form-label class="bold" nzRequired nzFor="name"
+          >Show Name</nz-form-label
+        >
+        <nz-form-control nzErrorTip="Please input your name" nzHasFeedback>
+          <input
+            type="text"
+            nz-input
+            formControlName="name"
+            placeholder="Please input your name"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nzMd="12">
+      <nz-form-item>
+        <nz-form-label
+          class="bold"
+          nzFor="imageUrl"
+          [nzRequired]="validateForm.get('required')?.value"
+          >Image URL</nz-form-label
+        >
+        <nz-form-control
+          nzErrorTip="The show must contain an image."
+          nzHasFeedback
+        >
+          <input
+            type="text"
+            nz-input
+            formControlName="imageUrl"
+            placeholder="Insert the image link"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nzMd="12">
+    <nz-form-item>
+      <nz-form-label
+        class="bold"
+        nzFor="genres"
+        [nzRequired]="validateForm.get('required')?.value"
+        >Genres</nz-form-label
+      >
+      <nz-form-control
+        nzErrorTip="The show requires at least an genre."
+        nzHasFeedback
+      >
+        <nz-select
+          nzMode="tags"
+          formControlName="genres"
+          nzPlaceHolder="Select genres played or add them."
+        >
+          <nz-option
+            *ngFor="let option of genresOptions"
+            [nzLabel]="option"
+            [nzValue]="option"
+          ></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <nz-divider></nz-divider>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzBlock nzType="primary">Check</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

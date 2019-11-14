@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import { Howl } from "howler";
+import { Howl, Howler } from "howler";
 
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
@@ -38,7 +38,6 @@ export class PlayerService {
       src: [this.url],
       format: ["mp3"],
       volume: this.volume,
-      html5: true,
       onloaderror: () => {
         this.isPlaying.next({
           isPlaying: false,
@@ -48,6 +47,17 @@ export class PlayerService {
         });
 
         this.stream = undefined;
+      },
+      onplayerror: () => {
+        this.stream.once("unlock", function() {
+          this.isPlaying.next({
+            isPlaying: true,
+            isLoading: false,
+            loaded: true
+          });
+
+          this.stream.play();
+        });
       }
     });
 
@@ -82,6 +92,8 @@ export class PlayerService {
       this.stream.fade(0, this.volume, 1000);
     }
   }
+
+  private handlePlay() {}
 
   pause() {
     this.stream.fade(this.volume, 0, 1000);

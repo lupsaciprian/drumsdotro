@@ -19,12 +19,6 @@ export class ShowResolve implements Resolve<ShowModel[]> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-    // const shows = this.showsService.shows;
-    // console.log("RESOLVE", shows);
-    // if (!shows) {
     return this.showsService.getShowsObservable();
-    // } else {
-    //   return shows;
-    // }
   }
 }

@@ -5,6 +5,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from "firebase/app";
 import { AlertInterface } from "../alert/alert.component";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-authenticate",
@@ -22,12 +23,13 @@ export class AuthenticateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     public afAuth: AngularFireAuth
   ) {}
 
   loginByUsername() {
     console.log(this.loginForm);
-    return;
+    this.router.navigate(["/admin"]);
   }
 
   loginWithService(service: string) {
