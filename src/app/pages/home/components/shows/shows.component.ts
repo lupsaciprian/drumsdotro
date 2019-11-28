@@ -24,7 +24,8 @@ export class ShowsComponent implements OnInit, OnDestroy {
   public alertMock: AlertInterface = {
     type: "danger",
     title: "Error loading the shows...",
-    description: "An error occured with the server."
+    description: "An error occured with the server.",
+    showRetry: true
   };
 
   private updateShowAiringInterval: Subscription;

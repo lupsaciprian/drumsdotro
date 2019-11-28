@@ -9,7 +9,7 @@ import { GlobalModule } from "../../global/global.module";
 
 // Ng Zorro
 import { NzTabsModule } from "ng-zorro-antd/tabs";
-import { NzSelectModule } from "ng-zorro-antd";
+import { NzSelectModule, NzStepsModule } from "ng-zorro-antd";
 
 // Components
 import { AdminComponent } from "./admin.component";
@@ -24,7 +24,8 @@ import { AllShowsComponent } from "./child-pages/all-shows/all-shows.component";
     AdminRoutingModule,
 
     NzTabsModule,
-    NzSelectModule
+    NzSelectModule,
+    NzStepsModule
   ],
   exports: []
 })

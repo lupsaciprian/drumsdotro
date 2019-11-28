@@ -16,6 +16,7 @@
 
     <div class="flex-item-center">
       <button
+        *ngIf="alert.showRetry"
         (click)="retryLoad()"
         class="alert-retry"
         nz-button

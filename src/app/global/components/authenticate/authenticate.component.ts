@@ -55,7 +55,8 @@ export class AuthenticateComponent implements OnInit {
     this.loginError = {
       title: "Error logging in",
       description: error.message,
-      type: "danger"
+      type: "danger",
+      showRetry: true
     };
 
     this.loadingLogin = false;

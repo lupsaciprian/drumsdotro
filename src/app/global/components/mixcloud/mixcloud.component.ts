@@ -39,7 +39,8 @@ export class MixcloudComponent implements OnInit {
         this.mixcloudFeedbackAlert = {
           type: "danger",
           title: "Error loading Mixcloud tab...",
-          description: error
+          description: error,
+          showRetry: true
         };
       }
     );
