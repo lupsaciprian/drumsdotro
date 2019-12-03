@@ -14,6 +14,7 @@ export interface AlertInterface {
   description: string;
   class?: string;
   icon?: string;
+  showRetry?: boolean;
 }
 
 @Component({

@@ -1,54 +1,61 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormArray,
+  FormControl
+} from "@angular/forms";
+
 import { ShowsService } from "src/app/global/services/shows/shows.service";
 import { ShowModel } from "src/app/global/models/show.model";
+import { StepperService } from "src/app/global/services/stepper.service";
 
 @Component({
   selector: "app-add-edit-show",
   templateUrl: "./add-edit-show.component.html",
-  styleUrls: ["./add-edit-show.component.less"]
+  styleUrls: ["./add-edit-show.component.less"],
+  providers: [StepperService]
 })
 export class AddEditShowComponent implements OnInit {
-  validateForm: FormGroup;
+  showForm: FormGroup;
 
-  genres: string[] = [];
   genresOptions: string[] = ["Drum & Bass", "Dnb"];
+  artistOptions: string[] = ["Cips", "Acidtech"];
 
-  submitForm(): void {
-    console.log(this.validateForm);
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
+  constructor(
+    private fb: FormBuilder,
+    private showsService: ShowsService,
+    private stepper: StepperService
+  ) {}
+
+  addNewLink() {
+    (<FormArray>this.showForm.get("links")).controls.push(this.fb.control(""));
   }
 
-  requiredChange(required: boolean): void {
-    if (!required) {
-      this.validateForm.get("nickname")!.clearValidators();
-      this.validateForm.get("nickname")!.markAsPristine();
-    } else {
-      this.validateForm.get("nickname")!.setValidators(Validators.required);
-      this.validateForm.get("nickname")!.markAsDirty();
+  submitForm() {
+    for (const control in this.showForm.controls) {
+      this.showForm.controls[control].markAsDirty();
+      this.showForm.controls[control].updateValueAndValidity();
     }
-    this.validateForm.get("nickname")!.updateValueAndValidity();
+    console.log(this.showForm.get("links"));
+    console.log(this.showForm);
   }
-
-  constructor(private fb: FormBuilder, private showsService: ShowsService) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
+    this.showForm = this.fb.group({
       name: [null, [Validators.required]],
-      imageUrl: ["", [Validators.required]],
+      artist: [null, [Validators.required]],
+      imageUrl: [null, [Validators.required]],
       required: [false],
-      genres: [this.genres, [Validators.required]]
+      genres: [[], [Validators.required]],
+      links: this.fb.array([])
     });
 
-    this.showsService.showsStream.subscribe((shows: ShowModel[]) => {
-      console.log(shows);
-      for (let show of shows) {
-        this.genres.concat(show.genre);
-      }
-      console.log(this.genres);
-    });
+    console.log(this.showForm.get("links"));
+
+    this.showsService.showsStream.subscribe((shows: ShowModel[]) => {});
+
+    console.log(this.showForm.get("imageUrl").value);
   }
 }

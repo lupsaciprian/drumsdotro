@@ -17,7 +17,6 @@ export interface StreamStatusInterface {
 })
 export class PlayerService {
   private url: string = "http://radio.drums.ro:8000/;";
-  // private url: string = "http://radio.drufsams.ro:8000/;";
   private stream: Howl;
   private volumeConstant: number = 0.5;
   private volumeDebouncer$ = new Subject<number>();

@@ -20,7 +20,10 @@ export class ShowsService {
   private _shows: ShowModel[];
   public showsStream: BehaviorSubject<ShowModel[]> = new BehaviorSubject([]);
 
-  // public loading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  constructor(
+    private dateService: DateService,
+    private firebase: AngularFirestore
+  ) {}
 
   public get shows(): ShowModel[] {
     if (!this._shows) return null;
@@ -38,13 +41,9 @@ export class ShowsService {
     const showExisting = this._shows
       .slice()
       .find(show => show.showName === name);
+
     return showExisting;
   }
-
-  constructor(
-    private dateService: DateService,
-    private firebase: AngularFirestore
-  ) {}
 
   private showsMapper(shows: ShowModel[]) {
     for (let show of shows) {
