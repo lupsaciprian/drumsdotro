@@ -15,9 +15,10 @@ import { NzSelectModule, NzStepsModule } from "ng-zorro-antd";
 import { AdminComponent } from "./admin.component";
 import { AddEditShowComponent } from "./child-pages/add-edit-show/add-edit-show.component";
 import { AllShowsComponent } from "./child-pages/all-shows/all-shows.component";
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
-  declarations: [AdminComponent, AddEditShowComponent, AllShowsComponent],
+  declarations: [AdminComponent, AddEditShowComponent, AllShowsComponent, FormComponent],
   imports: [
     ReactiveFormsModule,
     GlobalModule,

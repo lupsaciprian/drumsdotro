@@ -35,6 +35,8 @@ import { BannerComponent } from "./components/banner/banner.component";
 import { FooterComponent } from "../pages/home/components/footer/footer.component";
 import { MixcloudItemComponent } from "./components/mixcloud-item/mixcloud-item.component";
 import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
+import { ShowsComponent } from "./components/shows/shows.component";
+import { ShowIndividualComponent } from "./components/show-individual/show-individual.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
     FooterComponent,
     MixcloudItemComponent,
     MixcloudComponent,
+    ShowsComponent,
+    ShowIndividualComponent,
 
     SafePipe,
     PrettyDatePipe,
@@ -98,6 +102,8 @@ import { MixcloudComponent } from "./components/mixcloud/mixcloud.component";
     FooterComponent,
     MixcloudItemComponent,
     MixcloudComponent,
+    ShowsComponent,
+    ShowIndividualComponent,
 
     SafePipe,
     PrettyDatePipe,

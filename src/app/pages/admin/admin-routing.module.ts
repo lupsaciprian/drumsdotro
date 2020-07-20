@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminComponent } from "./admin.component";
 import { AddEditShowComponent } from "./child-pages/add-edit-show/add-edit-show.component";
 import { ShowResolve } from "src/app/global/resolvers/show-resolve.service";
+import { AllShowsComponent } from "./child-pages/all-shows/all-shows.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,11 @@ const routes: Routes = [
     pathMatch: "prefix",
     children: [
       {
-        path: "manage-show",
+        path: "all-shows",
+        component: AllShowsComponent
+      },
+      {
+        path: "show",
         component: AddEditShowComponent,
         resolve: {
           shows: ShowResolve

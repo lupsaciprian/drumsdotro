@@ -4,14 +4,9 @@
   <div nz-col nzMd="0" nzLg="1" nzXl="3"></div>
   <div nz-col nzSm="24" nzMd="24" nzLg="22" nzXl="18">
     <nz-card>
-      <nz-tabset nzSize="large" nzLinkRouter>
+      <nz-tabset nzSize="large" nzLinkRouter nzLinkExact="false">
         <nz-tab>
-          <a
-            nz-tab-link
-            [routerLink]="['manage-show']"
-            [queryParams]="{ tab: 'one' }"
-            queryParamsHandling="merge"
-          >
+          <a nz-tab-link [routerLink]="['all-shows']">
             <i nz-icon nzType="customer-service"></i>
             Manage Shows
           </a>
