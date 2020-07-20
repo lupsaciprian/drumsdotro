@@ -52,7 +52,8 @@ import { ShowIndividualComponent } from "./components/show-individual/show-indiv
 
     SafePipe,
     PrettyDatePipe,
-    NthPipe
+    NthPipe,
+    CutterPipe
   ],
   imports: [
     CommonModule,
@@ -107,7 +108,8 @@ import { ShowIndividualComponent } from "./components/show-individual/show-indiv
 
     SafePipe,
     PrettyDatePipe,
-    NthPipe
+    NthPipe,
+    CutterPipe
   ]
 })
-export class GlobalModule {}
+export class GlobalModule { }
